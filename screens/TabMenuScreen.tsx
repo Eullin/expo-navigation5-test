@@ -1,17 +1,18 @@
 import * as React from 'react';
 import { StyleSheet, Button } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
-
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
-export default function TabMenuScreen({ navigation }: StackScreenProps) {
+/* function TabBarIcon(props: { name: string; color: string }) {
+  return <Ionicons size={30} style={{ marginBottom: 10, color: 'red' }} {...props} />;
+} */
+export default function TabMenuScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Menu</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <Button
+        <Button
         title="Go to Settings"
         onPress={() => navigation.navigate('Settings')}
       />

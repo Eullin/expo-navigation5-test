@@ -1,18 +1,23 @@
 import React from 'react'
+import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack'
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { configContext } from '../context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+function TabBarIcon(props: { name: string; color: string }) {
+	return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+}
 
-export function createStack(screens: any, navigationOptions: any, defaultNavigationOptions: object) {
+export function createStack(screens: any, navigationOptions: any, defaultNavigationOptions: any) {
 	const Stack = createStackNavigator();
+
 	return (
 		<Stack.Navigator screenOptions={defaultNavigationOptions}>
 			{
 				screens.map((each: any) => {
-					let { config: { routeName, props }, Screen } = each;
-					return <Stack.Screen name={routeName} component={Screen} options={navigationOptions} key={routeName} />
+					let { config: { routeName, buttonTitle, icon }, Screen } = each;
+					return <Stack.Screen name={routeName} component={Screen} options={{title: buttonTitle }} key={routeName} />
 				})
 			}
 		</Stack.Navigator>
