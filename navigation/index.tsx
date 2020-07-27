@@ -2,33 +2,29 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
+import TabOneScreen from '../screens/TabOneScreen';
+import TabTwoScreen from '../screens/TabTwoScreen';
 
-import NotFoundScreen from '../screens/NotFoundScreen';
-import { RootStackParamList } from '../types';
-import BottomTabNavigator from './BottomTabNavigator';
+import NotFoundScreen from '../screens/NotFoundScreen'; import { RootStackParamList } from '../types';
+// import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import { createStack } from '../navigation/CreateStack'
+import MenuStack from '../screens/TabMenuScreen';
+import { BottomTabNavigator } from '../navigation//BottomTabNavigator'
 
-// If you are not familiar with React Navigation, we recommend going through the
-// "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
+
+// const TabMenuNavigator = createStack([{ Screen: MenuStack, config: { routeName: 'Menu' } },], {}, {});
+
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <RootNavigator />
+      {BottomTabNavigator}
     </NavigationContainer>
   );
 }
 
-// A root stack navigator is often used for displaying modals on top of all other content
-// Read more here: https://reactnavigation.org/docs/modal
-const Stack = createStackNavigator<RootStackParamList>();
 
-function RootNavigator() {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-    </Stack.Navigator>
-  );
-}
+
+
