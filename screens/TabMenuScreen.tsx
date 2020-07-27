@@ -5,9 +5,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
-/* function TabBarIcon(props: { name: string; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: 10, color: 'red' }} {...props} />;
-} */
+
 export default function TabMenuScreen({ navigation }) {
   return (
     <View style={styles.container}>
